@@ -2,6 +2,10 @@ import { Detail, showToast, Toast, popToRoot, Form, ActionPanel, Action } from "
 import { generateAnswer } from "./api";
 import { useEffect, useState } from "react";
 
+type ChatProps = {
+  promptField: string;
+};
+
 export default function Chat() {
   const [prompt, setPrompt] = useState("");
   const [answer, setAnswer] = useState<string>("");
@@ -28,7 +32,7 @@ export default function Chat() {
       actions={
         <ActionPanel>
           <Action.SubmitForm
-            onSubmit={(values: any) => {
+            onSubmit={(values: ChatProps) => {
               fetchAnswer(values.promptField);
               setPrompt("");
             }}
